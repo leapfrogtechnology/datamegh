@@ -66,6 +66,6 @@ def connect(**params) -> pyodbc.Connection:
     ''' Open connection to a Database. '''
     logger.debug('Connecting to database: {}/{}'.format(params.get('host'), params.get('database')))
 
-    connstr = build_connstr(params)
+    connstr = build_connstr(**params)
 
     return pyodbc.connect(connstr)
