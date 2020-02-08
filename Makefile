@@ -14,6 +14,6 @@ setup:
 	@pip install -U -e .[dev]
 
 test:
-	@pytest
+	@pytest -vvv
 
 .PHONY: all test clean
