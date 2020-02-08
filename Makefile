@@ -10,10 +10,14 @@ clean:
 venv:
 	@virtualenv -p python3 $(VENV_PATH)
 
-setup:
+venv_setup:
 	@pip install -U -e .[dev]
 
-test:
+venv_test:
 	@pytest -vvv
+
+test:
+	@docker build --target=test -t datamegh:test .
+	@docker run datamegh:test
 
 .PHONY: all test clean
