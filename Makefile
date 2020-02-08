@@ -10,7 +10,7 @@ clean:
 venv:
 	@virtualenv -p python3 $(VENV_PATH)
 
-venv_setup:
+setup:
 	@pip install -U -e .[dev]
 
 venv_test:
