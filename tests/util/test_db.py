@@ -44,3 +44,33 @@ def test_build_connstr_3():
     assert connstr_pg == 'DRIVER={PostgreSQL Unicode};SERVER=localhost;PORT=5432;DATABASE=test;UID=test;PWD=Test@123'
 
     # TODO: Add mysql
+
+
+def test_build_connstr_3():
+    ''' Test it default values could be overwritten for supported clients. '''
+
+    connstr_mssql = build_connstr(
+        client=MSSQL,
+        port=1444,
+        driver='SOME_OTHER_DRIVER',
+        host='localhost',
+        database='test',
+        username='test',
+        password='Test@123'
+    )
+
+    assert connstr_mssql == 'DRIVER=SOME_OTHER_DRIVER;SERVER=localhost;PORT=1444;DATABASE=test;UID=test;PWD=Test@123'
+
+    connstr_pg = build_connstr(
+        client=PG,
+        port=5444,
+        driver='SOME_OTHER_DRIVER',
+        host='localhost',
+        database='test',
+        username='test',
+        password='Test@123'
+    )
+
+    assert connstr_pg == 'DRIVER=SOME_OTHER_DRIVER;SERVER=localhost;PORT=5444;DATABASE=test;UID=test;PWD=Test@123'
+
+    # TODO: Add mysql
