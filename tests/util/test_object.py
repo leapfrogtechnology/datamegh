@@ -160,7 +160,10 @@ def test_merge_v0():
     dict2 = {
         'keyA': 'valueA',
         'key2': {
-            'keyB': 'valueB'
+            'keyB': 'valueB',
+            'keyC': {
+                'foo': 'bar'
+            }
         }
     }
 
@@ -169,7 +172,10 @@ def test_merge_v0():
         'key2': {
             'keyB': 'valueB',
             'key3': 'value3',
-            'key4': 'value4'
+            'key4': 'value4',
+            'keyC': {
+                'foo': 'bar'
+            }
         },
         'keyA': 'valueA'
     }
@@ -226,13 +232,15 @@ def test_merge_v2():
         'baz': 'Baz',
         'test': {
             'attr1': 'Foo Bar',
-            'attr2': 'Hello World!'
+            'attr2': 'Hello World!',
+            'attr3': ['value1', 'value2']
         }
     }, {
         'foo': None,
         'bar': 'Foo',
         'test': {
-            'attr2': None
+            'attr2': None,
+            'attr3': ['1', '2']
         }
     })
 
@@ -242,6 +250,7 @@ def test_merge_v2():
         'baz': 'Baz',
         'test': {
             'attr1': 'Foo Bar',
-            'attr2': None
+            'attr2': None,
+            'attr3': ['1', '2']
         }
     }
