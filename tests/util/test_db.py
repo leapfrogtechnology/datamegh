@@ -3,7 +3,9 @@
 import pytest
 import logging
 
-from datamegh.util.db import build_connstr, PG, MSSQL, MYSQL
+from mock import patch
+
+from datamegh.util.db import connect, build_connstr, PG, MSSQL, MYSQL
 
 
 def test_build_connstr_1():
@@ -74,3 +76,22 @@ def test_build_connstr_3():
     assert connstr_pg == 'DRIVER=SOME_OTHER_DRIVER;SERVER=localhost;PORT=5444;DATABASE=test;UID=test;PWD=Test@123'
 
     # TODO: Add mysql
+
+
+@patch('datamegh.util.db.pyodbc.connect')
+def test_connect(m_connect, m_pyodbc):
+    '''
+    Test it invokes pyodbc connect 
+    generating a connection string.
+    '''
+
+    connection = connect(
+        client=PG,
+        port=5444,
+        driver='SOME_OTHER_DRIVER',
+        host='localhost',
+        database='test',
+        username='test',
+        password='Test@123'
+    )
+    m_connect.assert_called_once()
