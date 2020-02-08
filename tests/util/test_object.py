@@ -211,3 +211,37 @@ def test_merge_v1():
     merged = merge(dict1, dict2)
 
     assert merged == expectedmerge
+
+
+def test_merge_v2():
+    '''
+    Test merge() would show all the keys from the 
+    initial dict, but also overwrite all the keys
+    found in both dict, even if the second value is
+    provided empty i.e None.
+    '''
+    merged = merge({
+        'foo': 'bar',
+        'bar': 'foo',
+        'baz': 'Baz',
+        'test': {
+            'attr1': 'Foo Bar',
+            'attr2': 'Hello World!'
+        }
+    }, {
+        'foo': None,
+        'bar': 'Foo',
+        'test': {
+            'attr2': None
+        }
+    })
+
+    assert merged == {
+        'foo': None,
+        'bar': 'Foo',
+        'baz': 'Baz',
+        'test': {
+            'attr1': 'Foo Bar',
+            'attr2': None
+        }
+    }
