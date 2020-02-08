@@ -7,7 +7,7 @@ import datamegh
 # Requirements
 requirements = [
     'pyodbc>=4.0.27,<5',
-    'flatten_json==0.1.6'
+    'flatten_json==0.1.7'
 ]
 
 # Development Requirements

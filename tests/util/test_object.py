@@ -94,7 +94,7 @@ def test_delinearize_2():
     with pytest.raises(AssertionError) as ex:
         delinearize(value)
 
-    assert ex.value.args[0] == "provided dictionary is not flat"
+    assert ex.value.args[0] == 'provided dict is not flat'
 
 
 def test_delinearize_3():
