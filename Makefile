@@ -16,6 +16,10 @@ setup:
 venv_test:
 	@pytest -vvv
 
+build:
+	@docker build --no-cache --target=test -t datamegh:test .
+	@docker build --no-cache --target=main -t datamegh .
+
 test:
 	@docker build --target=test -t datamegh:test .
 	@docker run datamegh:test
