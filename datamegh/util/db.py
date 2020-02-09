@@ -25,7 +25,7 @@ DEFAULTS[MSSQL] = {
     'port': '1433'
 }
 DEFAULTS[MYSQL] = {
-    'driver': None, # TODO: Add MySQL driver.
+    'driver': '{MySQL ODBC 8.0 Driver}',
     'port': '3306'
 }
 
