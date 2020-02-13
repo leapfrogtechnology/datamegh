@@ -1,7 +1,43 @@
 ''' Tests for datamegh.util.object util. '''
 
 import pytest
-from datamegh.util.object import linearize, delinearize, merge
+from datamegh.util.object import linearize, delinearize, merge, dict_to_list
+
+
+def test_dict_to_list_returns_list_when_valid_arguments_is_dict():
+    '''
+    Test a dictionary converted to list.
+    '''
+    value = {
+        'foo': 'bar',
+        'just': 'test',
+        'hello': 'world',
+    }
+
+    expected = [
+        {'name': 'foo', 'value': 'bar'},
+        {'name': 'just', 'value': 'test'},
+        {'name': 'hello', 'value': 'world'}
+    ]
+
+    assert dict_to_list(value) == expected
+
+
+def test_dict_to_list_returns_empty_list_when_argument_is_empty_dict():
+    '''
+    Test an empty dictionary converted to empty list.
+    '''
+    assert dict_to_list({}) == []
+
+
+def test_dict_to_list_raises_exception_when_argument_is_invalid():
+    '''
+    Test an invalid argument such as int to dict_to_list
+    '''
+    with pytest.raises(AttributeError) as ex:
+        dict_to_list(1)
+
+    assert ex.value.args[0] == "Argument must be a dictionary, invalid argument received '1'."
 
 
 def test_linearize_1():
@@ -221,7 +257,7 @@ def test_merge_v1():
 
 def test_merge_v2():
     '''
-    Test merge() would show all the keys from the 
+    Test merge() would show all the keys from the
     initial dict, but also overwrite all the keys
     found in both dict, even if the second value is
     provided empty i.e None.

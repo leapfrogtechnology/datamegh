@@ -12,6 +12,9 @@ def dict_to_list(dict):
     '''
     Returns a list of dictionaries with `name` and `value` keys for all key-value pair in given dictionary.
     '''
+    if not is_dict(dict):
+        raise AttributeError("Argument must be a dictionary, invalid argument received '%s'."%(dict))
+
     list = []
 
     for key, val in dict.items():
