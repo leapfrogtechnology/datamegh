@@ -1,6 +1,6 @@
 {
   "name": "datamegh",
-  "version": "0.1.0",
+  "version": "1.0.0-alpha.1",
   "description": "Datamegh - Data Engineering for the cloud.",
   "main": "index.js",
   "directories": {
