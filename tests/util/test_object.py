@@ -27,21 +27,15 @@ def test_dict_to_list_returns_empty_list_when_argument_is_empty_dict():
     '''
     Test an empty dictionary converted to empty list.
     '''
-    value = {}
-
-    expected = []
-
-    assert dict_to_list(value) == expected
+    assert dict_to_list({}) == []
 
 
 def test_dict_to_list_raises_exception_when_argument_is_invalid():
     '''
     Test an invalid argument such as int to dict_to_list
     '''
-    value = 1
-
     with pytest.raises(AttributeError) as ex:
-        dict_to_list(value)
+        dict_to_list(1)
 
     assert ex.value.args[0] == "Argument must be a dictionary, invalid argument received '1'."
 
