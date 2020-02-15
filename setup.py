@@ -13,7 +13,9 @@ requirements = [
 # Development Requirements
 requirements_dev = [
     'pytest==4.*',
-    'mock==3.0.5'
+    'mock==3.0.5',
+    'black==19.10b0',
+    'pre-commit==2.0.1'
 ]
 
 with open('README.md', 'r') as f:
