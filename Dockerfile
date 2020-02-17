@@ -42,4 +42,7 @@ RUN pip install .[dev] && npm install
 COPY ["tests", "./"]
 
 # Test the code is good, types are safe and tests are passing.
-CMD black --check --diff . && pyright && pytest -vvv
+CMD \
+  echo "\nRUNNING CODE STYLE CHECK (BLACK)" && black --check --diff . && \
+  echo "\nRUNNING TYPE CHECKS" && pyright && \
+  echo "\nRUNNING TESTS" && pytest -vvv
