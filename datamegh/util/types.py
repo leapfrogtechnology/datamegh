@@ -1,8 +1,8 @@
-''' Type utility functions. '''
+""" Type utility functions. """
 
 
 def is_string(obj):
-    ''' Check if the object is a string. '''
+    """ Check if the object is a string. """
     try:
         basestring
     except NameError:
@@ -12,18 +12,18 @@ def is_string(obj):
 
 
 def is_iterable(obj):
-    ''' Check if the object is iterable. '''
-    has_iter = hasattr(obj, '__iter__')
-    has_get_item = hasattr(obj, '__getitem__')
+    """ Check if the object is iterable. """
+    has_iter = hasattr(obj, "__iter__")
+    has_get_item = hasattr(obj, "__getitem__")
 
     return has_iter or has_get_item
 
 
 def is_dict(obj):
-    ''' Check if the object is a dict. '''
+    """ Check if the object is a dict. """
     return type(obj) == type({})
 
 
 def is_list(value):
-    ''' Check if the given value is a list. '''
+    """ Check if the given value is a list. """
     return isinstance(value, list)

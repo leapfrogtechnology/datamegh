@@ -1,1 +1,1 @@
-''' Common constants. '''
+""" Common constants. """
