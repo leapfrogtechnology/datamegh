@@ -13,9 +13,9 @@ log_level_map = {
     "warning": WARNING,
     "critical": CRITICAL,
 }
-config = {
+config: object = {
     "logging": {
-        "level": log_level_map.get(environ.get("LOG_LEVEL")) or DEBUG,
+        "level": log_level_map.get(environ.get("LOG_LEVEL", "debug")),
         "format": "%(asctime)s - [ %(levelname)s ] %(name)s - %(message)s",
     }
 }

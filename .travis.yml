@@ -12,4 +12,5 @@ install:
 before_script:
   - black --check --diff . 
 script:
+  - make setup
   - make test

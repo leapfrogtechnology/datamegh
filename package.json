@@ -1,0 +1,37 @@
+{
+  "name": "datamegh",
+  "version": "1.0.0-alpha.1",
+  "description": "Datamegh - Data Engineering for the cloud.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "typecheck": "pyright"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leapfrogtechnology/datamegh.git"
+  },
+  "keywords": [
+    "data",
+    "cloud",
+    "framework",
+    "serverless",
+    "docker",
+    "python",
+    "cloud-native"
+  ],
+  "author": "Kabir Baidhya",
+  "contributors": [
+    "Bimochan Shrestha <bmochan@gmail.com>"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/leapfrogtechnology/datamegh/issues"
+  },
+  "homepage": "https://github.com/leapfrogtechnology/datamegh#readme",
+  "dependencies": {
+    "pyright": "^1.1.21"
+  }
+}
