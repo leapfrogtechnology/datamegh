@@ -1,4 +1,5 @@
 # datamegh
+[![Build Status](https://travis-ci.org/leapfrogtechnology/datamegh.svg?branch=master)](https://travis-ci.org/leapfrogtechnology/datamegh)  
 
 Datamegh - Engineered for the cloud.
 
