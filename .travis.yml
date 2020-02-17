@@ -1,15 +1,45 @@
-language: Python
+os: linux
+
+dist: bionic
+
+language: python
+
 Python:
   - "3.7"
+
 before_install:
   # require for installing pyodbc
   - sudo apt-get install unixodbc-dev
+
 # command to setup datamegh
 install:
   - make setup
+
 # check for black format
 # build will stop if check fail 
 before_script:
   - black --check --diff . 
+
 script:
   - make test
+
+before_deploy:
+  # require for git versioning
+  - sudo curl https://raw.githubusercontent.com/fsaintjacques/semver-tool/2.1.0/src/semver -o /usr/local/bin/semver && sudo chmod +x /usr/local/bin/semver
+  - semver --version
+  # Create a tag prior to release
+  - last_tag=$(git tag --sort=-creatordate | head -n 1) && \ 
+    new_tag=$(semver bump patch "$last_tag") && \
+    timestamp=$(date -u +%Y%m%d%H%M%S) && \
+    new_version=$(if [ "$TRAVIS_BRANCH" = "master" ]; then echo "${new_tag}"; else echo "${new_tag}-${TRAVIS_BRANCH}.$timestamp"; fi) && \
+    echo "Bump version :- ${last_tag} -> ${new_version}" && \
+    git tag "${new_version}"
+
+# Make a release to github 
+deploy:
+  provider: releases
+  api_key: ${GITHUB_OAUTH_TOKEN}
+  prerelease: true 
+  skip_cleanup: true
+  on:
+    branch: master
