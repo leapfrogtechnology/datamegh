@@ -25,6 +25,6 @@ build:
 test:
 	@docker build --target=test -t datamegh:test .
 	@docker run datamegh:test
-	@npm run test
+	@npm run typecheck
 
 .PHONY: all test clean

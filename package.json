@@ -7,7 +7,7 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "npx pyright"
+    "typecheck": "pyright"
   },
   "repository": {
     "type": "git",
