@@ -12,7 +12,5 @@ install:
 before_script:
   - black --check --diff . 
 script:
-  - make venv
-  - source .venv/bin/activate
   - make setup
   - make test
