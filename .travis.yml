@@ -1,3 +1,4 @@
 
 script:
+  - make setup
   - make test
