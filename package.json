@@ -23,7 +23,9 @@
     "cloud-native"
   ],
   "author": "Kabir Baidhya",
-  "contributors": ["Bimochan Shrestha <bmochan@gmail.com>"],
+  "contributors": [
+    "Bimochan Shrestha <bmochan@gmail.com>"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/leapfrogtechnology/datamegh/issues"

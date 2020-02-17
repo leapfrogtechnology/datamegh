@@ -1,4 +1,6 @@
 
 script:
+  - make venv
+  - source .venv/bin/activate
   - make setup
   - make test
