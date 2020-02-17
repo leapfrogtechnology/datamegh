@@ -24,5 +24,6 @@ build:
 test:
 	@docker build --target=test -t datamegh:test .
 	@docker run datamegh:test
+	@pyright
 
 .PHONY: all test clean
