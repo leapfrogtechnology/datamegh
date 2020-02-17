@@ -132,3 +132,5 @@ dmypy.json
 
 # pyRight
 node_modules
+typings/*
+!typings/.gitkeep
