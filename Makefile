@@ -12,7 +12,7 @@ venv:
 
 setup:
 	@pip install -U -e .[dev]
-  @npm install
+	@npm install
 
 venv_test:
 	@pytest -vvv
