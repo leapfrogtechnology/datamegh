@@ -13,7 +13,6 @@ venv:
 setup:
 	@pip install -U -e .[dev]
 	@npm install
-	@pre-commit install
 
 venv_test:
 	@pytest -vvv
@@ -25,5 +24,12 @@ build:
 test:
 	@docker build --target=test -t datamegh:test .
 	@docker run datamegh:test
+
+format:
+	@black .
+
+check:
+	@black --check --diff .
+	@pyright
 
 .PHONY: all test clean
