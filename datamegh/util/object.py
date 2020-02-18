@@ -48,7 +48,8 @@ def with_only(src, attrs):
     """
     if not is_dict(src):
         raise AttributeError(
-            "First argument must be a dictionary, invalid argument received '%s'." % (src)
+            "First argument must be a dictionary, invalid argument received '%s'."
+            % (src)
         )
     elif not is_list(attrs):
         raise AttributeError(

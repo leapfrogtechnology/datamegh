@@ -241,7 +241,9 @@ def test_with_only_returns_dictionary_when_both_src_and_attrs_is_valid_arguments
     and attrs are provided to it
     """
 
-    assert with_only({"key1": "value1", "key2":"value2"}, ["key1"]) == {"key1": "value1"}
+    assert with_only({"key1": "value1", "key2": "value2"}, ["key1"]) == {
+        "key1": "value1"
+    }
 
 
 def test_with_only_returns_empty_dictionary_when_attrs_is_empty():
