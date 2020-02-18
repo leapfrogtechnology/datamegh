@@ -40,6 +40,12 @@ Note: This ensures all the dependencies are complete since tests are run in an i
 ## Contributing
 
 Feel free to send pull requests.
+Make sure to run following commands:
+```bash
+$ make format
+$ make check
+$ make test
+```
 
 ## License
 
