@@ -235,7 +235,7 @@ def test_merge_v2():
     }
 
 
-def test_with_only_returns_dictionary_when_both_src_and_attrs_is_valid_arguments():
+def test_with_only_returns_dictionary_when_both_src_and_attrs_are_valid_arguments():
     """
     Test datamegh.util.with_only() would return a dictionary when a valid source
     and attrs are provided to it

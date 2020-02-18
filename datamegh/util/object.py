@@ -14,7 +14,9 @@ def dict_to_list(dict):
     """
     if not is_dict(dict):
         raise AttributeError(
-            "Argument must be a dictionary, invalid argument received '%s'." % (dict)
+            "Argument must be a dictionary, invalid argument received '{}'.".format(
+                dict
+            )
         )
 
     list = []
@@ -48,12 +50,15 @@ def with_only(src, attrs):
     """
     if not is_dict(src):
         raise AttributeError(
-            "First argument must be a dictionary, invalid argument received '%s'."
-            % (src)
+            "First argument must be a dictionary, invalid argument received '{}'.".format(
+                src
+            )
         )
     elif not is_list(attrs):
         raise AttributeError(
-            "Second argument must be a list, invalid argument received '%s'." % (attrs)
+            "Second argument must be a list, invalid argument received '{}'.".format(
+                attrs
+            )
         )
 
     result = {}
