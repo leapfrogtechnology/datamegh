@@ -1,7 +1,14 @@
 """ Tests for datamegh.util.object util. """
 
 import pytest
-from datamegh.util.object import linearize, delinearize, merge, dict_to_list, with_only
+from datamegh.util.object import (
+    linearize,
+    delinearize,
+    merge,
+    dict_to_list,
+    without_attr,
+    with_only,
+)
 
 
 def test_dict_to_list_returns_list_when_valid_arguments_is_dict():
@@ -298,3 +305,27 @@ def test_with_only_raises_type_error_when_first_argument_is_not_dictionary():
         ex.value.args[0]
         == "with_only() missing 2 required positional arguments: 'src' and 'attrs'"
     )
+
+
+def test_without_attr_returns_list_without_the_attr():
+    """
+    Test that without_attr() returns a list without the attr
+    """
+    dict1 = {"Name": "Geeks", "Gender": "Male"}
+    dict2 = {"Gender": "Male"}
+    assert without_attr(dict1, ["Name"]) == dict2
+
+
+def test_without_attr_return_list_without_the_attr_for_nested_dict():
+    """
+    Test that without_attr() returns a list without the attr
+    for nested dictionaries
+    """
+    dict1 = {
+        "Name": "Geeks",
+        "Gender": "Male",
+        "Age": "55",
+        "Address": {"Street": "Charkhal", "District": "Kathmandu",},
+    }
+    dict2 = {"Name": "Geeks", "Gender": "Male", "Address": {"Street": "Charkhal",}}
+    assert without_attr(dict1, ["District", "Age"]) == dict2
