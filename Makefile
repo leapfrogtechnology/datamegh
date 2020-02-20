@@ -32,4 +32,4 @@ check:
 	@black --check --diff .
 	@pyright
 
-.PHONY: all test clean
+.PHONY: test clean
