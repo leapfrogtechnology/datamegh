@@ -30,6 +30,6 @@ format:
 
 check:
 	@black --check --diff .
-	@pyright
+	@npm run typecheck
 
 .PHONY: test clean
