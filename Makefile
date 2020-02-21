@@ -70,8 +70,8 @@ check:
 .PHONY: help
 ## Show this help message
 help:
-	@echo -e "Usage:\n\tmake <target>\n"
-	@echo "$$(tput bold)Available targets:$$(tput sgr0)"
+	@echo -e "Usage:\n\tmake <command>\n"
+	@echo "$$(tput bold)Available commands:$$(tput sgr0)"
 	@echo
 	@sed -n -e "/^## / { \
 		h; \
@@ -108,4 +108,3 @@ help:
 		printf "\n"; \
 	}' \
 	| more $(shell test $(shell uname) = Darwin && echo '--no-init --raw-control-chars')
-	@echo -e $$(echo "version commit@" && git rev-parse --short HEAD)
