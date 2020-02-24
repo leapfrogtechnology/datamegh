@@ -1,25 +1,3 @@
-os: linux
-
-dist: bionic
-
-language: python
-
-Python:
-  - "3.7"
-
-before_install:
-  # require for installing pyodbc
-  - sudo apt-get install unixodbc-dev
-
-# command to setup datamegh
-install:
-  - make setup
-
-# check for black format
-# build will stop if check fail 
-before_script:
-  - black --check --diff . 
-
 script:
   - make test
 
