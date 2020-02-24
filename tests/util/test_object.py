@@ -1,7 +1,14 @@
 """ Tests for datamegh.util.object util. """
 
 import pytest
-from datamegh.util.object import linearize, delinearize, merge, dict_to_list
+from datamegh.util.object import (
+    linearize,
+    delinearize,
+    merge,
+    dict_to_list,
+    without_attr,
+    with_only,
+)
 
 
 def test_dict_to_list_returns_list_when_valid_arguments_is_dict():
@@ -233,3 +240,92 @@ def test_merge_v2():
         "baz": "Baz",
         "test": {"attr1": "Foo Bar", "attr2": None, "attr3": ["1", "2"]},
     }
+
+
+def test_with_only_returns_dictionary_when_both_src_and_attrs_are_valid_arguments():
+    """
+    Test datamegh.util.with_only() would return a dictionary when a valid source
+    and attrs are provided to it
+    """
+
+    assert with_only({"key1": "value1", "key2": "value2"}, ["key1"]) == {
+        "key1": "value1"
+    }
+
+
+def test_with_only_returns_empty_dictionary_when_attrs_is_empty():
+    """
+    Test datamegh.util.with_only() would return an empty dictionary when empty attrs
+    list is provided to it.
+    """
+
+    assert with_only({"key1": "value1", "key2": "value2"}, []) == {}
+
+
+def test_with_only_raises_attribute_error_when_first_argument_is_not_dictionary():
+    """
+    Test datamegh.util.with_only() would return an Attribute error when src is an invalid
+    argument.
+    """
+
+    with pytest.raises(AttributeError) as ex:
+        with_only(1, [])
+
+    assert (
+        ex.value.args[0]
+        == "First argument must be a dictionary, invalid argument received '1'."
+    )
+
+
+def test_with_only_raises_attribute_error_when_second_argument_is_not_list():
+    """
+    Test datamegh.util.with_only() would return an Attribute error when attrs is an invalid
+    argument.
+    """
+
+    with pytest.raises(AttributeError) as ex:
+        with_only({}, 1)
+
+    assert (
+        ex.value.args[0]
+        == "Second argument must be a list, invalid argument received '1'."
+    )
+
+
+def test_with_only_raises_type_error_when_first_argument_is_not_dictionary():
+    """
+    Test datamegh.util.with_only() would return an Attribute error when no arguments
+    are provided to it.
+    """
+
+    with pytest.raises(TypeError) as ex:
+        with_only()
+
+    assert (
+        ex.value.args[0]
+        == "with_only() missing 2 required positional arguments: 'src' and 'attrs'"
+    )
+
+
+def test_without_attr_returns_list_without_the_attr():
+    """
+    Test that without_attr() returns a list without the attr
+    """
+    dict1 = {"Name": "Geeks", "Gender": "Male"}
+    dict2 = {"Gender": "Male"}
+    assert without_attr(dict1, ["Name"]) == dict2
+
+
+def test_without_attr_return_list_without_the_attr_for_nested_dict():
+    """
+    Test that without_attr() returns a list without the attr
+    for nested dictionaries
+    """
+    dict1 = {
+        "Name": "Geeks",
+        "Gender": "Male",
+        "Age": "55",
+        "Address": {"Street": "Charkhal", "District": "Kathmandu",},
+    }
+    dict2 = {"Name": "Geeks", "Gender": "Male", "Address": {"Street": "Charkhal",}}
+    assert without_attr(dict1, ["District", "Age"]) == dict2

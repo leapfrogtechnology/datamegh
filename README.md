@@ -1,5 +1,7 @@
 # datamegh
-[![Build Status](https://travis-ci.org/leapfrogtechnology/datamegh.svg?branch=master)](https://travis-ci.org/leapfrogtechnology/datamegh)  
+[![Travis (.org)](https://img.shields.io/travis/leapfrogtechnology/datamegh?style=flat-square&branch=master)](https://travis-ci.org/leapfrogtechnology/datamegh)  
+
+
 
 Datamegh - Engineered for the cloud.
 
@@ -38,6 +40,12 @@ Note: This ensures all the dependencies are complete since tests are run in an i
 ## Contributing
 
 Feel free to send pull requests.
+Make sure to run following commands:
+```bash
+$ make format
+$ make check
+$ make test
+```
 
 ## License
 

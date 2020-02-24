@@ -5,7 +5,7 @@ import flatten_json
 
 from copy import deepcopy
 
-from datamegh.util.types import is_dict, is_iterable, is_string
+from datamegh.util.types import is_dict, is_iterable, is_string, is_list
 
 
 def dict_to_list(dict):
@@ -14,7 +14,9 @@ def dict_to_list(dict):
     """
     if not is_dict(dict):
         raise AttributeError(
-            "Argument must be a dictionary, invalid argument received '%s'." % (dict)
+            "Argument must be a dictionary, invalid argument received '{}'.".format(
+                dict
+            )
         )
 
     list = []
@@ -46,9 +48,22 @@ def with_only(src, attrs):
     Return a new copy of source dictionary
     containing only the attributes provided.
     """
+    if not is_dict(src):
+        raise AttributeError(
+            "First argument must be a dictionary, invalid argument received '{}'.".format(
+                src
+            )
+        )
+    elif not is_list(attrs):
+        raise AttributeError(
+            "Second argument must be a list, invalid argument received '{}'.".format(
+                attrs
+            )
+        )
+
     result = {}
 
-    for key, value in src.iteritems():
+    for key, value in src.items():
         if key in attrs:
             result[key] = value
 
