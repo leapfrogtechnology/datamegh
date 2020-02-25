@@ -134,3 +134,6 @@ dmypy.json
 node_modules
 typings/*
 !typings/.gitkeep
+
+# pycharm
+.idea/
