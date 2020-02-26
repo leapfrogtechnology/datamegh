@@ -57,6 +57,7 @@ tag:
 	git add datamegh/__init__.py
 	git commit -m "Update $(last_tag) to $(new_version) [skip ci]"
 	git tag $(new_version)
+	git push origin ${TRAVIS_BRANCH}
 	git push origin ${TRAVIS_BRANCH} --tags
 
 	
