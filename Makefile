@@ -48,14 +48,17 @@ test:
 
 .PHONY: all test clean
 
+## Update Tag and push to github 
 tag:
-	@echo "Bump version :- $(last_tag) -> $(new_version)"
-	@sed -i "s/version.*=.*/version = '$(new_version)'/" datamegh/__init__.py && \
-		git add datamegh/__init__.py && \
-		git commit -m "Update version to $(new_version)" -m "[skip ci]" && \
-		git remote add origin-pusher https://${GITHUB_OAUTH_TOKEN}@github.com/leapfrogtechnology/datamegh.git || true && \
-		git push origin-pusher ${TRAVIS_BRANCH} --tags
+	echo "Bump version :- $(last_tag) -> $(new_version)"
+	git remote add origin-pusher https://${GITHUB_OAUTH_TOKEN}@github.com/leapfrogtechnology/datamegh.git
+	sed -i'' "s/version.*=.*/version = '$(new_version)'/" datamegh/__init__.py
+	git add __init__.py
+	git commit -m "Update $(last_tag) to $(new_version)" -m "[skip ci]"
+	git push origin-pusher ${TRAVIS_BRANCH}
+	git tag $(new_version)
 
+	
 .PHONY: format
 ## Format the code.
 format:

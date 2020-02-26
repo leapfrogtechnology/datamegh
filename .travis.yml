@@ -1,10 +1,11 @@
+install:
+  - sudo curl https://raw.githubusercontent.com/fsaintjacques/semver-tool/2.1.0/src/semver -o /usr/local/bin/semver && sudo chmod +x /usr/local/bin/semver
+  - semver --version
 script:
   - make test
 
 before_deploy:
   # require for git versioning
-  - sudo curl https://raw.githubusercontent.com/fsaintjacques/semver-tool/2.1.0/src/semver -o /usr/local/bin/semver && sudo chmod +x /usr/local/bin/semver
-  - semver --version
   # Create a tag prior to release
   - make tag
  
@@ -15,5 +16,7 @@ deploy:
   prerelease: true 
   skip_cleanup: true
   on:
-    branch: master
+    branch:
+    - master
+    - release-maker
 
