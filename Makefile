@@ -2,7 +2,6 @@ SHELL :=/bin/bash
 CWD := $(PWD)
 TMP_PATH := $(CWD)/.tmp
 VENV_PATH := $(CWD)/.venv
-TRAVIS_BRANCH := master
 
 last_tag := $(shell git tag --sort=-creatordate | head -n 1)
 new_tag := $(shell semver bump patch "${last_tag}")
@@ -51,6 +50,8 @@ test:
 ## Update Tag and push to github 
 tag:
 	echo "Bump version :- $(last_tag) -> $(new_version)"
+	git config --global user.name "leapfrog-bot"
+    git config --global user.email "devops@lftechnology.com"
 	git remote add origin-pusher https://${GITHUB_OAUTH_TOKEN}@github.com/leapfrogtechnology/datamegh.git
 	sed -i'' "s/version.*=.*/version = '$(new_version)'/" datamegh/__init__.py
 	git add datamegh/__init__.py
