@@ -51,7 +51,7 @@ test:
 tag:
 	echo "Bump version :- $(last_tag) -> $(new_version)"
 	git config --global user.name "leapfrog-bot"
-    git config --global user.email "devops@lftechnology.com"
+	git config --global user.email "devops@lftechnology.com"
 	git remote add origin-pusher https://${GITHUB_OAUTH_TOKEN}@github.com/leapfrogtechnology/datamegh.git
 	sed -i'' "s/version.*=.*/version = '$(new_version)'/" datamegh/__init__.py
 	git add datamegh/__init__.py
