@@ -8,6 +8,7 @@ before_deploy:
   # require for git versioning
   # Create a tag prior to release
   - make tag
+  - export CURRENT_TAG=$(git tag --sort=-creatordate | head -n 1)
  
 # Make a release to github 
 deploy:
@@ -15,6 +16,7 @@ deploy:
   api_key: ${GITHUB_OAUTH_TOKEN}
   prerelease: true 
   skip_cleanup: true
+  tag_name: ${CURRENT_TAG}
   on:
     branch:
     - master
