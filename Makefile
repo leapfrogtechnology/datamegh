@@ -7,7 +7,7 @@ last_tag := $(shell git tag --sort=-creatordate | head -n 1)
 new_tag := $(shell semver bump patch "${last_tag}")
 timestamp := $(date -u +%Y%m%d%H%M%S)
 # The new version is tagged as pre-release for master. Once we are good to go for production, remove the -prerelease suffix
-new_version := $(shell if [ "${TRAVIS_BRANCH}" = "master" ]; then echo "${new_tag}-alpha.${timestamp}"; else echo "${new_tag}-${TRAVIS_BRANCH}.${timestamp}"; fi)
+new_version := $(shell if [ "${TRAVIS_BRANCH}" = "master" ]; then echo "${new_tag}-prerelease"; else echo "${new_tag}-alpha.${timestamp}"; fi)
 COLOR=\x1b[36m
 NO_COLOR=\x1b[m]
 
