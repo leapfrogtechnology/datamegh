@@ -52,12 +52,12 @@ tag:
 	echo "Bump version :- $(last_tag) -> $(new_version)"
 	git config --global user.name "leapfrog-bot"
 	git config --global user.email "devops@lftechnology.com"
-	git remote add origin-pusher https://${GITHUB_OAUTH_TOKEN}@github.com/leapfrogtechnology/datamegh.git
+	git remote set-url origin https://${GITHUB_OAUTH_TOKEN}@github.com/leapfrogtechnology/datamegh.git
 	sed -i'' "s/version.*=.*/version = '$(new_version)'/" datamegh/__init__.py
 	git add datamegh/__init__.py
-	git commit -m "Update $(last_tag) to $(new_version)" -m "[skip ci]"
+	git commit -m "Update $(last_tag) to $(new_version) [skip ci]"
 	git tag $(new_version)
-	git push origin-pusher ${TRAVIS_BRANCH} --tags
+	git push origin ${TRAVIS_BRANCH} --tags
 
 	
 .PHONY: format
