@@ -20,5 +20,4 @@ deploy:
     branch:
     - master
     - release-maker
-    tags: true
 
