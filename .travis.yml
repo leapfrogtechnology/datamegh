@@ -7,14 +7,13 @@ script:
 before_deploy:
   # require for git versioning
   # Create a tag prior to release
-  - make tag
+  - sudo snap install hub --classic
  
 # Make a release to github 
 deploy:
-  provider: releases
-  api_key: ${GITHUB_OAUTH_TOKEN}
-  prerelease: true 
+  provider: script
   skip_cleanup: true
+  script: make release
   on:
     branch:
     - master
