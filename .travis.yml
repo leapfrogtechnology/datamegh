@@ -1,19 +1,21 @@
+install:
+  - sudo curl https://raw.githubusercontent.com/fsaintjacques/semver-tool/2.1.0/src/semver -o /usr/local/bin/semver && sudo chmod +x /usr/local/bin/semver
+  - semver --version
 script:
   - make test
 
 before_deploy:
   # require for git versioning
-  - sudo curl https://raw.githubusercontent.com/fsaintjacques/semver-tool/2.1.0/src/semver -o /usr/local/bin/semver && sudo chmod +x /usr/local/bin/semver
-  - semver --version
   # Create a tag prior to release
-  - make tag
+  - sudo snap install hub --classic
  
 # Make a release to github 
 deploy:
-  provider: releases
-  api_key: ${GITHUB_OAUTH_TOKEN}
-  prerelease: true 
+  provider: script
   skip_cleanup: true
+  script: make release
   on:
-    branch: master
+    branch:
+    - master
+    - travis
 
