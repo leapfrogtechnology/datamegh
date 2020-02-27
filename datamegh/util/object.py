@@ -4,13 +4,15 @@ import collections
 import flatten_json
 
 from copy import deepcopy
+from typing import Dict, List
 
 from datamegh.util.types import is_dict, is_iterable, is_string, is_list
 
 
-def dict_to_list(dict):
+def dict_to_list(dict: Dict, name_key: str = "name", value_key: str = "value"):
     """
-    Returns a list of dictionaries with `name` and `value` keys for all key-value pair in given dictionary.
+    Returns a list of dictionaries with `name` and `value` keys for all
+    key-value pair in given dictionary.
     """
     if not is_dict(dict):
         raise AttributeError(
@@ -22,9 +24,27 @@ def dict_to_list(dict):
     list = []
 
     for key, val in dict.items():
-        list.append({"name": key, "value": val})
+        list.append({name_key: key, value_key: val})
 
     return list
+
+
+def list_to_dict(list: List, name_key: str = "name", value_key: str = "value"):
+    """
+    Returns a key-value pair dictionary with given list of dictionary having
+    `name` and `value` keys or custom keys.
+    """
+    if not is_list(list):
+        raise AttributeError(
+            "Argument must be a list, invalid argument received '{}'.".format(list)
+        )
+
+    dict = {}
+
+    for item in list:
+        dict[item[name_key]] = item[value_key]
+
+    return dict
 
 
 def merge(dict1, dict2):

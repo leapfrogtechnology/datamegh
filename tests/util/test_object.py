@@ -6,6 +6,7 @@ from datamegh.util.object import (
     delinearize,
     merge,
     dict_to_list,
+    list_to_dict,
     without_attr,
     with_only,
 )
@@ -48,6 +49,44 @@ def test_dict_to_list_raises_exception_when_argument_is_invalid():
         ex.value.args[0]
         == "Argument must be a dictionary, invalid argument received '1'."
     )
+
+
+def test_list_to_dict_returns_dict_when_valid_arguments_is_list():
+    """ Simple cases for list_to_dict() """
+    dict_items = {"mode": 16877, "size": 64, "name": "timesheet", "is_file": False}
+
+    list_items = [
+        {"name": "mode", "value": 16877},
+        {"name": "size", "value": 64},
+        {"name": "name", "value": "timesheet"},
+        {"name": "is_file", "value": False},
+    ]
+
+    assert list_to_dict(list_items) == dict_items
+
+
+def test_list_to_dict_return_dict_with_custom_keys():
+    """ Case of list_to_dict() with custom `keys` """
+    items = [{"key": "test101.txt", "size": 23}, {"key": "test201.txt", "size": 24}]
+
+    assert list_to_dict(items, "key", "size") == {"test101.txt": 23, "test201.txt": 24}
+
+
+def test_list_to_dict_returns_empty_dict_when_argument_is_empty_list():
+    """
+    Test an empty dictionary converted to empty list.
+    """
+    assert list_to_dict([]) == {}
+
+
+def test_list_to_dict_raises_exception_when_argument_is_invalid():
+    """
+    Test an invalid argument such as int to list_to_dict
+    """
+    with pytest.raises(AttributeError) as ex:
+        list_to_dict(1)
+
+    assert ex.value.args[0] == "Argument must be a list, invalid argument received '1'."
 
 
 def test_linearize_1():
