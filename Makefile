@@ -51,7 +51,7 @@ test:
 tag:
 	echo "Bump version :- $(last_tag) -> $(new_version)"
 	git remote set-url origin https://${GITHUB_TOKEN}@github.com/leapfrogtechnology/datamegh.git
-	git config --global user.name "leapfrog Bot"
+	git config --global user.name "Leapfrog Bot"
 	git config --global user.email "devops@lftechnology.com"
 	git checkout ${TRAVIS_BRANCH}
 	git fetch origin --tags
