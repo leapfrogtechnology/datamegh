@@ -17,5 +17,5 @@ deploy:
   on:
     branch:
     - master
-    - release-maker
+    - travis
 
