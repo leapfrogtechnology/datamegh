@@ -64,9 +64,6 @@ tag:
 ## Create a github release
 release: tag
 	hub release create "${new_version}" -m "${new_version}"
-
-
-	
 .PHONY: format
 ## Format the code.
 format:
