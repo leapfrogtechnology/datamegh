@@ -55,7 +55,7 @@ tag:
 	git config --global user.email "devops@lftechnology.com"
 	git checkout ${TRAVIS_BRANCH}
 	git fetch origin --tags
-	sed -i'' "s/version.*=.*/version = '$(new_version)'/" datamegh/__init__.py
+	sed -i'' "s/version.*=.*/version = \"$(new_version)\"/" datamegh/__init__.py
 	git add datamegh/__init__.py
 	git commit -m "Update version to $(new_version)" -m "[skip ci]"
 	git push origin HEAD
