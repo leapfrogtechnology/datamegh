@@ -57,13 +57,14 @@ tag:
 	git fetch origin --tags
 	sed -i'' "s/version.*=.*/version = '$(new_version)'/" datamegh/__init__.py
 	git add datamegh/__init__.py
-	git commit -m "Update $(last_tag) to $(new_version)" -m "[skip ci]"
+	git commit -m "Update version to $(new_version)" -m "[skip ci]"
 	git push origin HEAD
 	git tag $(new_version)
 
 ## Create a github release
 release: tag
-	hub release create "${new_version}" -m "${new_version}"
+	hub release create "${new_version}" -m "${new_version}" -p
+
 .PHONY: format
 ## Format the code.
 format:
