@@ -31,6 +31,16 @@ def test_dict_to_list_returns_list_when_valid_arguments_is_dict():
     assert dict_to_list(value) == expected
 
 
+def test_dict_to_list_return_dict_with_custom_keys():
+    """ Cases of dict_to_list() with custom `keys` """
+    items = {"test101.txt": 23, "test201.txt": 24}
+
+    assert dict_to_list(items, "key", "size") == [
+        {"key": "test101.txt", "size": 23},
+        {"key": "test201.txt", "size": 24},
+    ]
+
+
 def test_dict_to_list_returns_empty_list_when_argument_is_empty_dict():
     """
     Test an empty dictionary converted to empty list.
