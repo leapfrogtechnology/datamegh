@@ -8,6 +8,7 @@ before_deploy:
   # require for git versioning
   # Create a tag prior to release
   - sudo snap install hub --classic
+  - git remote set-url origin https://${GITHUB_TOKEN}@github.com/leapfrogtechnology/datamegh.git
  
 # Make a release to github 
 deploy:

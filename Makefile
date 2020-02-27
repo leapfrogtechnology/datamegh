@@ -56,8 +56,8 @@ tag:
 	sed -i'' "s/version.*=.*/version = '$(new_version)'/" datamegh/__init__.py
 	git add datamegh/__init__.py
 	git commit -m "Update $(last_tag) to $(new_version)" -m "[skip ci]"
-	git tag $(new_version)
 	git push origin HEAD
+	git tag $(new_version)
 
 ## Create a github release
 release: tag
