@@ -50,8 +50,10 @@ test:
 ## Update Tag and push to github 
 tag:
 	echo "Bump version :- $(last_tag) -> $(new_version)"
-	git config --global user.name "leapfrog-bot"
+	git remote set-url origin https://${GITHUB_TOKEN}@github.com/leapfrogtechnology/datamegh.git
+	git config --global user.name "leapfrog Bot"
 	git config --global user.email "devops@lftechnology.com"
+	git checkout ${TRAVIS_BRANCH}
 	git fetch origin --tags
 	sed -i'' "s/version.*=.*/version = '$(new_version)'/" datamegh/__init__.py
 	git add datamegh/__init__.py
