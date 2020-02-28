@@ -1,9 +1,9 @@
 # datamegh
 [![Travis (.org)](https://img.shields.io/travis/leapfrogtechnology/datamegh?style=flat-square&branch=master)](https://travis-ci.org/leapfrogtechnology/datamegh)  
 
+Datamegh - A Cloud-native framework for Data Engineering projects.
 
-
-Datamegh - Engineered for the cloud.
+If you're unfamiliar with what cloud-native means? Read it [here](https://github.com/cncf/toc/blob/master/DEFINITION.md).
 
 ## Development
 
