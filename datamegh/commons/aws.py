@@ -1,4 +1,4 @@
-"""Base class to configure AWS"""
+""" AWS base utility. """
 import boto3
 
 from settings import AWS_CONFIG
