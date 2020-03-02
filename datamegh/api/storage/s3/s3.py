@@ -22,10 +22,12 @@ def upload(file_path: str, bucket_name: str, s3_object_name: str) -> None:
     # Upload the file to S3
     try:
         transfer.upload_file(file_path, bucket_name, s3_object_name)
-    except FileNotFoundError:
+    except FileNotFoundError as fe:
         logger.error("File: {} was not found".format(file_path))
+        raise fe
     except (ClientError, S3UploadFailedError) as se:
         logger.error(se)
+        raise se
     else:
         logger.info(
             "File : {} uploaded to {} bucket S3 successfully.".format(
@@ -50,6 +52,7 @@ def download(
         s3_client.download_file(bucket_name, s3_object_name, file_path)
     except ClientError as ce:
         logger.error(ce)
+        raise ce
     else:
         logger.info(
             "File: {} downloaded successfully in the dir {}.".format(
