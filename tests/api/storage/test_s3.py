@@ -25,7 +25,7 @@ def s3_client(aws_credentials):
 def test_upload(s3_client):
     # Arrange
     file_dir = os.path.dirname(os.path.abspath(__file__))
-    file_path = "{}/sample/test_file.json".format(file_dir)
+    file_path = os.path.join(file_dir, "sample/test_file.json")
     bucket_name = "test_bucket"
     s3_object_name = "test_file.json"
     with open(file_path) as file:
@@ -44,7 +44,7 @@ def test_upload(s3_client):
 
 def test_download(s3_client):
     # Arrange
-    file_dir = os.path.dirname(os.path.abspath(__file__)) + "/sample/"
+    file_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "sample/")
     bucket_name = "test_bucket"
     file_name = "test_file_download.json"
     file_body = json.dumps({"name": "John", "age": 30, "car": None})
