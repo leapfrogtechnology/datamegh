@@ -8,7 +8,7 @@ import datamegh
 requirements = ["pyodbc>=4.0.27,<5", "flatten_json==0.1.7", "boto3==1.12.6"]
 
 # Development Requirements
-requirements_dev = ["pytest==4.*", "mock==3.0.5", "black==19.10b0"]
+requirements_dev = ["pytest==4.*", "mock==3.0.5", "black==19.10b0", "moto==1.3.14"]
 
 with open("README.md", "r") as f:
     long_description = f.read()
