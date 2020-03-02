@@ -1,8 +1,10 @@
 import os
+import json
 import boto3
 import pytest
-import json
+import tempfile
 from moto import mock_s3
+
 from datamegh.api.storage import s3
 
 
@@ -44,14 +46,15 @@ def test_upload(s3_client):
 
 def test_download(s3_client):
     # Arrange
-    file_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "sample/")
     bucket_name = "test_bucket"
     file_name = "test_file_download.json"
     file_body = json.dumps({"name": "John", "age": 30, "car": None})
     s3_object_name = "s3_test_file.json"
     s3_client.put_object(Bucket=bucket_name, Key=s3_object_name, Body=file_body)
-    # Act
-    s3.download(file_dir, file_name, bucket_name, s3_object_name)
+    with tempfile.TemporaryDirectory() as file_dir:
+        # Act
+        s3.download(file_dir, file_name, bucket_name, s3_object_name)
+
     s3_object = json.loads(
         s3_client.get_object(Bucket=bucket_name, Key=s3_object_name)["Body"]
         .read()
