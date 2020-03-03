@@ -4,9 +4,11 @@ from botocore import client
 
 from datamegh import config
 
+
 def get_aws_client(client_name: str):
     """
-    Method to get AWS client object
+    Get a new AWS client instance.
+
     :param client_name: name of the AWS client
     :return: AWS client
     """

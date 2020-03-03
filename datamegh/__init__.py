@@ -23,10 +23,9 @@ config: object = {
         "level": log_level_map.get(os.getenv("LOG_LEVEL", "debug")),
         "format": "%(asctime)s - [ %(levelname)s ] %(name)s - %(message)s",
     },
-
     # AWS configuration credentials
     "aws": {
         "aws_access_key_id": os.getenv("AWS_ACCESS_KEY_ID"),
         "aws_secret_access_key": os.getenv("AWS_SECRET_ACCESS_KEY"),
-    }
+    },
 }
