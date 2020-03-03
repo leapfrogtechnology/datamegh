@@ -1,7 +1,7 @@
 # STAGE: base
 # -----------
 # The base image (intermediate).
-FROM laudio/pyodbc:1.0.32 AS base
+FROM laudio/pyodbc:1.0.33 AS base
 
 WORKDIR /source
 
