@@ -5,7 +5,8 @@ from boto3.exceptions import S3UploadFailedError
 from botocore.exceptions import ClientError
 
 from datamegh.api.common.aws import get_aws_client
-from datamegh.util.logging import get_logger
+
+from datamegh.api.logging import get_logger
 
 logger = get_logger("storage:s3")
 
