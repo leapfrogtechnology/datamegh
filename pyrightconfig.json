@@ -1,5 +1,7 @@
 {
   "exclude":["venv", ".venv", "*.pyc", "*.egg-info", ".coverage", "node_modules"],
+  "venvPath": ".",
+  "venv": ".venv",
   "reportMissingImports": true,
   "reportUnusedVariable": true,
   "reportImportCycles": true,
