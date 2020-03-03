@@ -1,7 +1,6 @@
 """ Tests for the db utility. """
 
 import pytest
-import logging
 
 from mock import patch
 
@@ -119,7 +118,7 @@ def test_build_connstr_4():
 @patch("datamegh.util.db.pyodbc")
 def test_connect(m_pyodbc):
     """
-    Test it invokes pyodbc connect 
+    Test it invokes pyodbc connect
     generating a connection string.
     """
 

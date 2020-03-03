@@ -3,7 +3,8 @@
 import pyodbc
 
 from datamegh.util.object import merge
-from datamegh.util.logging import get_logger
+
+from datamegh.api.logging import get_logger
 
 # Database connection types
 PG: str = "pg"
