@@ -1,6 +1,4 @@
 {
-  "include": ["datamegh/**/*.py", "tests/**/*.py"],
-  "exclude":["venv", "*.pyc", "*.egg-info", ".coverage"],
-  "reportMissingImports": true,
-  "strict":["datamegh", "tests"]
+  "exclude":["venv", ".venv", "*.pyc", "*.egg-info", ".coverage", "node_modules"],
+  "reportMissingImports": true
 }
