@@ -1,4 +1,27 @@
 {
   "exclude":["venv", ".venv", "*.pyc", "*.egg-info", ".coverage", "node_modules"],
-  "reportMissingImports": true
+  "reportMissingImports": true,
+  "reportUnusedVariable": true,
+  "reportImportCycles": true,
+  "reportUnusedClass": true,
+  "reportUnusedFunction": true,
+  "reportDuplicateImport": true,
+  "reportOptionalSubscript": true,
+  "reportUntypedFunctionDecorator": true,
+  "reportUntypedClassDecorator": true,
+  "reportUntypedBaseClass": true,
+  "reportUntypedNamedTuple": true,
+  "reportPrivateUsage": true,
+  "reportConstantRedefinition": true,
+  "reportInvalidStringEscapeSequence": true,
+  "reportUnknownParameterType": true,
+  "reportUnknownArgumentType": true,
+  "reportUnknownLambdaType": true,
+  "reportUnknownVariableType": true,
+  "reportUnknownMemberType": true,
+  "reportUnnecessaryIsInstance": true,
+  "reportUnnecessaryCast": true,
+  "reportAssertAlwaysTrue": "warning",
+  "reportImplicitStringConcatenation": true
+
 }
