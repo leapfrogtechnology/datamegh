@@ -10,13 +10,14 @@ from datamegh.api.storage import s3
 
 @pytest.fixture()
 def aws_credentials():
-    """Mocked AWS Credentials for moto."""
+    """ Fixture for AWS Credentials. """
     os.environ["AWS_ACCESS_KEY_ID"] = "test_aws_access_key_id"
     os.environ["AWS_SECRET_ACCESS_KEY"] = "test_aws_secret_access_key"
 
 
 @pytest.fixture()
 def s3_client(aws_credentials):
+    """ S3 client fixture. """
     BUCKET = "test_bucket"
     with mock_s3():
         s3_client = boto3.client("s3")
@@ -25,7 +26,7 @@ def s3_client(aws_credentials):
 
 
 def test_upload(s3_client):
-    # Arrange
+    """ Test upload works. """
     file_dir = os.path.dirname(os.path.abspath(__file__))
     file_path = os.path.join(file_dir, "sample/test_file.json")
     bucket_name = "test_bucket"
@@ -45,7 +46,7 @@ def test_upload(s3_client):
 
 
 def test_download(s3_client):
-    # Arrange
+    """ Test download works. """
     bucket_name = "test_bucket"
     file_name = "test_file_download.json"
     file_body = json.dumps({"name": "John", "age": 30, "car": None})
