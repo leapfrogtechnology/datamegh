@@ -3,7 +3,8 @@
 import pyodbc
 
 from datamegh.util.object import merge
-from datamegh.util.logging import get_logger
+
+from datamegh.api.logging import get_logger
 
 # Database connection types
 PG: str = "pg"
@@ -53,16 +54,3 @@ def build_connstr(**args) -> str:
     connstr = CONN_STR.format(**params)
 
     return connstr
-
-
-def connect(**params) -> pyodbc.Connection:
-    """ Open connection to a Database. """
-    logger.debug(
-        "Connecting to database: {}/{}".format(
-            params.get("host"), params.get("database")
-        )
-    )
-
-    connstr = build_connstr(**params)
-
-    return pyodbc.connect(connstr)

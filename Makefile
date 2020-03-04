@@ -14,7 +14,7 @@ NO_COLOR=\x1b[m]
 .PHONY: clean
 ## Clean the pycache folder and pyc files.
 clean:
-	@rm -rf $(TMP_PATH) __pycache__ .pytest_cache
+	@rm -rf $(TMP_PATH) ./**/*.pyc __pycache__ **/__pycache__ .pytest_cache
 	@find . -name '*.pyc' -delete
 
 .PHONY: venv
