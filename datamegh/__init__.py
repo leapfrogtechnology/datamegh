@@ -5,7 +5,7 @@ from logging import INFO, DEBUG, ERROR, WARNING, CRITICAL
 
 
 name = "datamegh"
-version = "0.0.11-alpha.20200304083654"
+version = "0.0.12-alpha.20200319130820"
 
 log_level_map = {
     "info": INFO,
