@@ -25,5 +25,4 @@
   "reportUnnecessaryCast": true,
   "reportAssertAlwaysTrue": "warning",
   "reportImplicitStringConcatenation": true
-
 }
